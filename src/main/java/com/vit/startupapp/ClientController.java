@@ -16,13 +16,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/client")
+@RequestMapping("/api/register")
 public class ClientController {
 
     @Autowired
     ClientRepository clientRepository;
 
-    @GetMapping("/get-all-clients")
+    @GetMapping("/get-all-registrations")
     public List<ClientEntity> getAllClients(){
         List<ClientEntity> allClientlist = clientRepository.findAll();
         return allClientlist;
@@ -34,7 +34,6 @@ public class ClientController {
 
     {
         ClientEntity clientEntity = clientRepository.findById(clientId).get();
-
         return clientEntity;
     }
 
@@ -52,8 +51,14 @@ public class ClientController {
         ClientEntity clientEntity = clientRepository.findById(clientId).get();
 
         clientEntity.setEmailId(clientDetails.getEmailId());
-        clientEntity.setName(clientDetails.getName());
-        clientEntity.setLocation(clientDetails.getLocation());
+        clientEntity.setAddress(clientDetails.getAddress());
+        clientEntity.setCity(clientDetails.getCity());
+        clientEntity.setCountry(clientDetails.getCountry());
+        clientEntity.setPhoneNumber(clientDetails.getPhoneNumber());
+        clientEntity.setDobAD(clientDetails.getDobAD());
+        clientEntity.setFirstName(clientDetails.getFirstName());
+        clientEntity.setLastName(clientDetails.getLastName());
+        clientEntity.setPassword(clientDetails.getPassword());
         final ClientEntity updatedEmployee = clientRepository.save(clientEntity);
         return ResponseEntity.ok(updatedEmployee);
     }
