@@ -49,7 +49,6 @@ public class ClientController {
     public ResponseEntity<ClientEntity> updateClient(@PathVariable(value = "id") Integer clientId,
                                                          @RequestBody ClientEntity clientDetails) {
         ClientEntity clientEntity = clientRepository.findById(clientId).get();
-
         clientEntity.setEmailId(clientDetails.getEmailId());
         clientEntity.setAddress(clientDetails.getAddress());
         clientEntity.setCity(clientDetails.getCity());
