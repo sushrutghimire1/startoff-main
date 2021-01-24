@@ -1,4 +1,4 @@
-package com.vit.startupapp;
+package com.vit.startupapp.repository.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,9 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "clients")
+@Table(name = "registrations")
 public class ClientEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -150,18 +149,4 @@ public class ClientEntity {
         this.lastName = lastName;
     }
 
-    @Override
-    public String toString() {
-        return "ClientEntity{" +
-                "id=" + id +
-                ", password='" + password + '\'' +
-                ", address='" + address + '\'' +
-                ", emailId='" + emailId + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", dobAD='" + dobAD + '\'' +
-                ", city='" + city + '\'' +
-                ", country='" + country + '\'' +
-                ", role='" + role + '\'' +
-                '}';
-    }
 }
