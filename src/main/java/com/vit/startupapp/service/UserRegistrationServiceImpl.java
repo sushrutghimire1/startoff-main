@@ -24,6 +24,10 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
 
     @Override
     public List<UserRegistrationInfo> findAllUsers() {
+        var users=this.userRegistrationRepository.findAll();
+        users.forEach(user->{
+
+        });
         return null;
     }
 
