@@ -12,6 +12,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+
 @RestController
 @RequestMapping("/api/auth")
 class AuthenticationController {
@@ -43,7 +45,11 @@ class AuthenticationController {
 
 		final String jwt = jwtTokenUtil.generateToken(userDetails);
 
-		return ResponseEntity.ok(new AuthenticationResponse(jwt));
+		ArrayList<String> authorities=new ArrayList<String>();
+		authorities.add("ROLE_ADMIN");
+		authorities.add("ROLE_PM");
+
+		return ResponseEntity.ok(new AuthenticationResponse(jwt, authorities, userDetails.getUsername()));
 	}
 
 }
