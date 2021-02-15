@@ -2,6 +2,7 @@ package com.vit.startupapp.service;
 
 import com.vit.startupapp.controller.objects.UserRegistrationInfo;
 import com.vit.startupapp.repository.UserRegistrationRepository;
+import com.vit.startupapp.repository.entity.ClientEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +25,7 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
 
     @Override
     public List<UserRegistrationInfo> findAllUsers() {
-        var users=this.userRegistrationRepository.findAll();
+        List<ClientEntity> users=this.userRegistrationRepository.findAll();
         users.forEach(user->{
 
         });
