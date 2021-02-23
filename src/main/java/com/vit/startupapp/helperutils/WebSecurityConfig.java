@@ -1,4 +1,4 @@
-package com.vit.startupapp.controller;
+package com.vit.startupapp.helperutils;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,27 +17,31 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @EnableWebSecurity
 class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-	@Qualifier("userDetailService")
-	@Autowired
-	private UserDetailsService myUserDetailsService;
-	@Autowired
-	private JwtRequestFilter jwtRequestFilter;
+    private final UserDetailsService myUserDetailsService;
+    private final JwtRequestFilter jwtRequestFilter;
 
-	@Autowired
-	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(myUserDetailsService);
-	}
+    @Autowired
+    public WebSecurityConfig(@Qualifier("userDetailService") UserDetailsService myUserDetailsService, JwtRequestFilter jwtRequestFilter) {
+        this.myUserDetailsService = myUserDetailsService;
+        this.jwtRequestFilter = jwtRequestFilter;
+    }
 
-	@Bean
-	public PasswordEncoder passwordEncoder() {
-		return NoOpPasswordEncoder.getInstance();
-	}
 
-	@Override
-	@Bean
-	public AuthenticationManager authenticationManagerBean() throws Exception {
-		return super.authenticationManagerBean();
-	}
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(myUserDetailsService);
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return NoOpPasswordEncoder.getInstance();
+    }
+
+    @Override
+    @Bean
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
 
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception {

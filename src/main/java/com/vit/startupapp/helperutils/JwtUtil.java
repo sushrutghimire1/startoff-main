@@ -1,4 +1,4 @@
-package com.vit.startupapp.util;
+package com.vit.startupapp.helperutils;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -14,7 +14,7 @@ import java.util.function.Function;
 @Service
 public class JwtUtil {
 
-    private String SECRET_KEY = "secret";
+    private final String SECRET_KEY = "Sushrut";
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
@@ -28,6 +28,7 @@ public class JwtUtil {
         final Claims claims = extractAllClaims(token);
         return claimsResolver.apply(claims);
     }
+
     private Claims extractAllClaims(String token) {
         return Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token).getBody();
     }
@@ -38,6 +39,7 @@ public class JwtUtil {
 
     public String generateToken(UserDetails userDetails) {
         Map<String, Object> claims = new HashMap<>();
+        claims.put("user", "CLIENT");
         return createToken(claims, userDetails.getUsername());
     }
 

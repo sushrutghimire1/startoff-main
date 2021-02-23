@@ -8,48 +8,52 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "registrations")
+@Table(name = "client_registrations")
 public class ClientEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @Column(name = "id", nullable = false)
+    private String id;
 
-    @Column(name = "first_name", nullable = false)
+    @Column(name = "username", nullable = false)
+    private String username;
+
+    @Column(name = "first_name")
     private String firstName;
 
-    @Column(name = "last_name", nullable = false)
+    @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "password", nullable = false)
+    @Column(name = "password")
     private String password;
 
-    @Column(name = "address", nullable = false)
+    @Column(name = "address")
     private String address;
 
-    @Column(name = "email", nullable = false)
+    @Column(name = "email")
     private String emailId;
 
-    @Column(name = "phone_number", nullable = false)
+    @Column(name = "phone_number")
     private String phoneNumber;
 
-    @Column(name = "dobAD", nullable = false)
+    @Column(name = "dobAD")
     private String dobAD;
 
-    @Column(name = "city", nullable = false)
+    @Column(name = "city")
     private String city;
 
-    @Column(name = "country", nullable = false)
+    @Column(name = "country")
     private String country;
 
-    @Column(name = "role", nullable = false)
+    @Column(name = "role")
     private String role;
 
     public ClientEntity() {
 
     }
 
-    public ClientEntity(Integer id, String firstName, String lastName, String password, String address, String emailId, String phoneNumber, String dobAD, String city, String country, String role) {
+    public ClientEntity(String id,String firstName, String lastName, String password, String address, String emailId, String phoneNumber, String dobAD, String city, String country, String role,String username) {
         this.id = id;
+        this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
@@ -60,14 +64,6 @@ public class ClientEntity {
         this.city = city;
         this.country = country;
         this.role = role;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getEmailId() {
@@ -149,4 +145,19 @@ public class ClientEntity {
         this.lastName = lastName;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 }

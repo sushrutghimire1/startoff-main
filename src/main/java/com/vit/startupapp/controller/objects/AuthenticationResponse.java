@@ -7,12 +7,12 @@ public class AuthenticationResponse implements Serializable {
 
     private final String jwt;
     private final ArrayList<String> authorities;
-    private final String username;
+    private final String id;
 
-    public AuthenticationResponse(String jwt, ArrayList<String> authorities, String username) {
+    public AuthenticationResponse(String jwt, ArrayList<String> authorities, String id) {
         this.jwt = jwt;
         this.authorities = authorities;
-        this.username = username;
+        this.id = id;
     }
 
     public String getJwt() {
@@ -23,7 +23,7 @@ public class AuthenticationResponse implements Serializable {
         return authorities;
     }
 
-    public String getUsername() {
-        return username;
+    public String getId() {
+        return id;
     }
 }

@@ -1,4 +1,4 @@
-package com.vit.startupapp.security;
+package com.vit.startupapp.helperutils;
 
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 

@@ -1,4 +1,4 @@
-package com.vit.startupapp.controller;
+package com.vit.startupapp.helperutils;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
