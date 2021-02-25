@@ -62,7 +62,6 @@ class AuthenticationController {
         userDetails.getAuthorities().forEach(user -> authorities.add(user.getAuthority()));
 
         ClientEntity clientEntity = this.clientRegistrationRepository.findClientByUsername(userDetails.getUsername());
-
         return ResponseEntity.ok(new AuthenticationResponse(jwt, authorities, clientEntity.getId()));
     }
 
